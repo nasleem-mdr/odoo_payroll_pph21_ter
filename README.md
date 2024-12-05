@@ -8,11 +8,13 @@ Langkah penghitungan PPh 21 Pada aplikasi odoo
    d. Buat salary rule untuk pemotongan PPh 21 berdasarkan TER (kode diambil dari pph21_v1.py)
 2. Duplikat Salary Struktur diatas untuk penghitungan Gaji Bulan Desember dan Tambahkan kode Pemotongan PPh 21 (pph21_desember.py)
 3. Untuk mendapatkan akumulasi/summary/aggregate penghitungan struktur gaji gunakan kode berikut:
-   ```already_paid = sum(
+   ```
+   already_paid = sum(
    employee.mapped("slip_ids")
        .filtered(lambda s: s.date_from.year == 2024 and s.state in ("done", "paid"))
        .mapped("line_ids")
        .filtered(lambda l: l.code == "GROSS")
        .mapped("total")
     )
-    result = already_paid```
+    result = already_paid
+   ```
