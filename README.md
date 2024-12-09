@@ -10,11 +10,11 @@ Langkah penghitungan PPh 21 Pada aplikasi odoo
 3. Untuk mendapatkan akumulasi/summary/aggregate penghitungan struktur gaji gunakan kode berikut:
    ```
    already_paid = sum(
-   employee.mapped("slip_ids")
-       .filtered(lambda s: s.date_from.year == 2024 and s.state in ("done", "paid"))
-       .mapped("line_ids")
-       .filtered(lambda l: l.code == "GROSS")
-       .mapped("total")
-    )
-    result = already_paid
+       employee.mapped("slip_ids")
+           .filtered(lambda s: s.date_from.year == 2024 and s.state in ("done", "paid"))
+           .mapped("line_ids")
+           .filtered(lambda l: l.code == "GROSS")
+           .mapped("total")
+   )
+   result = already_paid
    ```
